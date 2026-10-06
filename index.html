@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Growth & Patient Acquisition Proposal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="proposal-page" aria-label="{{business.name}} proposal">
+    <section id="slide-01-cover" class="slide cover-slide">
+      <div class="cover-panel">
+        <img class="cover-wise-logo" src="assets/wise-logo.png" alt="Wise Advertisement">
+        <p class="cover-prepared">PREPARED FOR {{business.name_upper}}</p>
+        <h1>Digital Growth &amp;<br>Patient<br>Acquisition<br>Proposal</h1>
+        <p class="cover-services">Website&nbsp;&nbsp; / &nbsp;&nbsp;SEO&nbsp;&nbsp; / &nbsp;&nbsp;Paid Media&nbsp;&nbsp; / &nbsp;&nbsp;Social Media</p>
+        <p class="cover-location">{{business.location}}</p>
+        <p class="cover-date">{{proposal.month_year}}</p>
+      </div>
+      <div class="cover-photo-wrap">
+        <img class="cover-photo" src="{{assets.cover_photo}}" alt="{{business.name}} team photo">
+      </div>
+    </section>
+
+    <section id="slide-02-website-performance" class="slide">
+      <header class="slide-header">
+        <h2>Website performance</h2>
+        <div class="accent-line"></div>
+        <p>Mobile loading speed is a priority for {{business.name_upper}} Website</p>
+      </header>
+      <div class="performance-dashboard structured-visual" aria-label="Website Performance dashboard">
+        <article class="panel performance-score-card">
+          <svg class="score-gauge" data-score="{{website_performance.score_raw}}" data-max="{{website_performance.score_max}}" viewBox="0 0 220 220" role="img" aria-label="Performance score {{website_performance.score_raw}} out of {{website_performance.score_max}}">
+            <circle class="score-gauge-track" cx="110" cy="110" r="88" fill="#fff3f4" stroke="#fde1e4" stroke-width="20"></circle>
+            <circle class="score-gauge-progress" cx="110" cy="110" r="88" fill="none" stroke="#ff2733" stroke-width="20" stroke-linecap="round" transform="rotate(-90 110 110)"></circle>
+            <text x="110" y="116" text-anchor="middle" class="gauge-value">{{website_performance.score_raw}}</text>
+            <text x="110" y="148" text-anchor="middle" class="gauge-label">OUT OF {{website_performance.score_max}}</text>
+          </svg>
+          <h3>Website Performance</h3>
+          <p class="score-copy">{{website_performance.summary}}</p>
+          <div class="score-legend">
+            <div><span class="legend-dot red"></span><strong>0–49</strong><small>Needs<br>Improvement</small></div>
+            <div><span class="legend-dot orange"></span><strong>50–89</strong><small>Good</small></div>
+            <div><span class="legend-dot green"></span><strong>90–100</strong><small>Excellent</small></div>
+          </div>
+        </article>
+        <div class="metric-card-list">
+          <article class="panel metric-card {{website_performance.fcp.card_class}}">
+            <span class="metric-icon">⏱</span>
+            <div>
+              <h3>First Contentful Paint</h3>
+              <strong data-value="{{website_performance.fcp.raw}}">{{website_performance.fcp.display}}</strong>
+              <p>Time until the first piece of content is visible to users.</p>
+            </div>
+            <span class="status-pill {{website_performance.fcp.status_class}}">{{website_performance.fcp.status_html}}</span>
+          </article>
+          <article class="panel metric-card {{website_performance.tbt.card_class}}">
+            <span class="metric-icon">⌛</span>
+            <div>
+              <h3>Total Blocking Time</h3>
+              <strong data-value="{{website_performance.tbt.raw}}">{{website_performance.tbt.display}}</strong>
+              <p>Time during which the main thread is blocked and cannot respond.</p>
+            </div>
+            <span class="status-pill {{website_performance.tbt.status_class}}">{{website_performance.tbt.status_html}}</span>
+          </article>
+          <article class="panel metric-card {{website_performance.lcp.card_class}}">
+            <span class="metric-icon">▧</span>
+            <div>
+              <h3>Largest Contentful Paint</h3>
+              <strong data-value="{{website_performance.lcp.raw}}">{{website_performance.lcp.display}}</strong>
+              <p>Time until the largest visible content element fully loads.</p>
+            </div>
+            <span class="status-pill {{website_performance.lcp.status_class}}">{{website_performance.lcp.status_html}}</span>
+          </article>
+          <article class="panel metric-card {{website_performance.speed_index.card_class}}">
+            <span class="metric-icon">⌁</span>
+            <div>
+              <h3>Speed Index</h3>
+              <strong data-value="{{website_performance.speed_index.raw}}">{{website_performance.speed_index.display}}</strong>
+              <p>How quickly the page content is visually populated.</p>
+            </div>
+            <span class="status-pill {{website_performance.speed_index.status_class}}">{{website_performance.speed_index.status_html}}</span>
+          </article>
+          <article class="panel metric-card {{website_performance.cls.card_class}}">
+            <span class="metric-icon">▤</span>
+            <div>
+              <h3>Cumulative Layout Shift</h3>
+              <strong data-value="{{website_performance.cls.raw}}">{{website_performance.cls.display}}</strong>
+              <p>Measures visual stability as the page loads.</p>
+            </div>
+            <span class="status-pill {{website_performance.cls.status_class}}">{{website_performance.cls.status_html}}</span>
+          </article>
+        </div>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-03-technical-issues" class="slide">
+      <header class="slide-header">
+        <h2>Technical Issues &amp; Opportunities</h2>
+        <div class="accent-line"></div>
+        <p>Key performance insights from Chrome DevTools</p>
+      </header>
+      <div class="issues-grid structured-visual">
+        <article class="panel issue-card">
+          <div class="issue-card-head">
+            <div><h3>INSIGHTS</h3><p>Loading and resource delivery</p></div>
+            <span class="review-pill">{{technical.insights.flagged_count}} flagged / {{technical.insights.review_count}} to review</span>
+          </div>
+          <ul class="issue-list">
+            {{#each technical.insights.primary_items}}
+            <li><span class="{{icon_class}}"></span><span>{{title}}</span>{{#if detail}}<em>—</em><strong>{{detail}}</strong>{{/if}}<b>⌄</b></li>
+            {{/each}}
+          </ul>
+          <p class="warning-box"><strong>Warnings:</strong> {{technical.insights.warning}}</p>
+          <ul class="issue-list compact">
+            {{#each technical.insights.secondary_items}}
+            <li><span class="{{icon_class}}"></span><span>{{title}}</span>{{#if detail}}<em>—</em><strong>{{detail}}</strong>{{/if}}<b>⌄</b></li>
+            {{/each}}
+          </ul>
+        </article>
+        <article class="panel issue-card">
+          <div class="issue-card-head">
+            <div><h3>DIAGNOSTICS</h3><p>Browser workload and page weight</p></div>
+            <span class="review-pill">{{technical.diagnostics.flagged_count}} flagged / {{technical.diagnostics.review_count}} to review</span>
+          </div>
+          <ul class="issue-list diagnostics">
+            {{#each technical.diagnostics.items}}
+            <li><span class="{{icon_class}}"></span><span>{{title}}</span>{{#if detail}}<em>—</em><strong>{{detail}}</strong>{{/if}}{{#if note}}<em>—</em><small>{{note}}</small>{{/if}}<b>⌄</b></li>
+            {{/each}}
+          </ul>
+        </article>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-04-ui-ux-design" class="slide ux-slide">
+      <header class="slide-header">
+        <h2>UI/UX Design</h2>
+        <div class="accent-line"></div>
+        <p>{{ui_ux.subtitle}}</p>
+      </header>
+      <img class="mobile-site" src="{{assets.mobile_site_screenshot}}" alt="{{business.name}} mobile website screenshot">
+      <div class="ux-notes">
+        <h3>WHAT WORKS</h3>
+        <ul>
+          {{#each ui_ux.what_works}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        <h3>CONVERSION FRICTION</h3>
+        <ul>
+          {{#each ui_ux.conversion_friction}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+        <div class="recommendation">
+          <h4>Recommended experience</h4>
+          <p>{{ui_ux.recommendation}}</p>
+        </div>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-05-seo-audit" class="slide">
+      <header class="slide-header">
+        <h2>SEO Audit</h2>
+        <div class="accent-line"></div>
+        <p>AI search visibility and SEO performance snapshot</p>
+      </header>
+      <div class="seo-dashboard structured-visual">
+        <article class="panel seo-card ai-visibility">
+          <div class="card-title"><span class="soft-icon purple">✦</span><h3>AI Visibility</h3></div>
+          <div class="hero-stat"><strong>{{seo.ai_visibility.total}}</strong><span class="{{seo.ai_visibility.delta_class}}">{{seo.ai_visibility.delta}}</span><small>All platforms</small></div>
+          <div class="mini-stats three">
+            <div><span>AI Overviews</span><strong>{{seo.ai_visibility.ai_overviews.value}}</strong><em class="{{seo.ai_visibility.ai_overviews.delta_class}}">{{seo.ai_visibility.ai_overviews.delta}}</em></div>
+            <div><span>Pages</span><strong>{{seo.ai_visibility.pages.value}}</strong><em class="{{seo.ai_visibility.pages.delta_class}}">{{seo.ai_visibility.pages.delta}}</em></div>
+            <div><span>AI Overview Pages</span><strong>{{seo.ai_visibility.ai_overview_pages.value}}</strong><em class="{{seo.ai_visibility.ai_overview_pages.delta_class}}">{{seo.ai_visibility.ai_overview_pages.delta}}</em></div>
+          </div>
+        </article>
+        <article class="panel seo-card backlink-profile">
+          <div class="card-title"><span class="soft-icon blue">🔗</span><h3>Backlink Profile</h3></div>
+          <div class="mini-stats two">
+            <div><span>DR</span><strong>{{seo.backlinks.dr.value}}</strong><em class="{{seo.backlinks.dr.delta_class}}">{{seo.backlinks.dr.delta}}</em></div>
+            <div><span>UR</span><strong>{{seo.backlinks.ur.value}}</strong><em class="{{seo.backlinks.ur.delta_class}}">{{seo.backlinks.ur.delta}}</em></div>
+            <div><span>Backlinks</span><strong>{{seo.backlinks.backlinks.value}}</strong><em class="{{seo.backlinks.backlinks.delta_class}}">{{seo.backlinks.backlinks.delta}}</em></div>
+            <div><span>Ref. Domains</span><strong>{{seo.backlinks.ref_domains.value}}</strong><em class="{{seo.backlinks.ref_domains.delta_class}}">{{seo.backlinks.ref_domains.delta}}</em></div>
+          </div>
+        </article>
+        <article class="panel seo-card search-performance">
+          <div class="card-title"><span class="soft-icon blue">⌕</span><h3>Search Performance</h3></div>
+          <div class="mini-stats three">
+            <div><span>Organic Keywords</span><strong>{{seo.search.organic_keywords.value}}</strong><em class="{{seo.search.organic_keywords.delta_class}}">{{seo.search.organic_keywords.delta}}</em></div>
+            <div><span>Top 3</span><strong>{{seo.search.top_3.value}}</strong><em class="{{seo.search.top_3.delta_class}}">{{seo.search.top_3.delta}}</em></div>
+            <div><span>Organic Traffic</span><strong>{{seo.search.organic_traffic.value}}</strong><em class="{{seo.search.organic_traffic.delta_class}}">{{seo.search.organic_traffic.delta}}</em></div>
+            <div><span>Value</span><strong>{{seo.search.value.value}}</strong><em class="{{seo.search.value.delta_class}}">{{seo.search.value.delta}}</em></div>
+            <div><span>Paid Keywords</span><strong>{{seo.search.paid_keywords.value}}</strong><em class="{{seo.search.paid_keywords.delta_class}}">{{seo.search.paid_keywords.delta}}</em></div>
+            <div><span>Paid Traffic</span><strong>{{seo.search.paid_traffic.value}}</strong><em class="{{seo.search.paid_traffic.delta_class}}">{{seo.search.paid_traffic.delta}}</em></div>
+          </div>
+        </article>
+        <article class="panel seo-card ai-search-presence">
+          <div class="card-title"><span class="soft-icon purple">☷</span><h3>AI Search Presence</h3></div>
+          <table class="compact-table source-table">
+            <thead><tr><th>Source</th><th>Responses</th><th>Pages</th></tr></thead>
+            <tbody>
+              {{#each seo.ai_search_presence}}
+              <tr><td>{{source}}</td><td>{{responses.value}} <em class="{{responses.delta_class}}">{{responses.delta}}</em></td><td>{{pages.value}} <em class="{{pages.delta_class}}">{{pages.delta}}</em></td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </article>
+        <article class="panel seo-card seo-snapshot">
+          <div class="card-title"><span class="soft-icon blue">⚙</span><h3>SEO Snapshot</h3></div>
+          <div class="mini-stats four">
+            <div><span>DR</span><strong>{{seo.snapshot.dr.value}}</strong><em class="{{seo.snapshot.dr.delta_class}}">{{seo.snapshot.dr.delta}}</em></div>
+            <div><span>UR</span><strong>{{seo.snapshot.ur.value}}</strong><em class="{{seo.snapshot.ur.delta_class}}">{{seo.snapshot.ur.delta}}</em></div>
+            <div><span>Organic Keywords</span><strong>{{seo.snapshot.organic_keywords.value}}</strong><em class="{{seo.snapshot.organic_keywords.delta_class}}">{{seo.snapshot.organic_keywords.delta}}</em></div>
+            <div><span>Organic Traffic</span><strong>{{seo.snapshot.organic_traffic.value}}</strong><em class="{{seo.snapshot.organic_traffic.delta_class}}">{{seo.snapshot.organic_traffic.delta}}</em></div>
+            <div><span>Value</span><strong>{{seo.snapshot.value.value}}</strong><em class="{{seo.snapshot.value.delta_class}}">{{seo.snapshot.value.delta}}</em></div>
+            <div><span>Ref. Domains</span><strong>{{seo.snapshot.ref_domains.value}}</strong><em class="{{seo.snapshot.ref_domains.delta_class}}">{{seo.snapshot.ref_domains.delta}}</em></div>
+            <div><span>Paid Keywords</span><strong>{{seo.snapshot.paid_keywords.value}}</strong><em class="{{seo.snapshot.paid_keywords.delta_class}}">{{seo.snapshot.paid_keywords.delta}}</em></div>
+            <div><span>Paid Traffic</span><strong>{{seo.snapshot.paid_traffic.value}}</strong><em class="{{seo.snapshot.paid_traffic.delta_class}}">{{seo.snapshot.paid_traffic.delta}}</em></div>
+          </div>
+        </article>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-06-organic-keyword-rankings" class="slide dark-slide">
+      <header class="dark-header">
+        <h2>Organic keyword rankings </h2>
+        <p>Past-month traffic highlights from current ranking keywords.</p>
+      </header>
+      <div class="rankings-grid structured-visual">
+        <article class="ranking-panel">
+          <div class="ranking-title"><span class="soft-icon blue">▣</span><div><h3>Branded &amp; Local Rankings</h3><p>{{business.name}} branded keywords by location.</p></div></div>
+          <table class="data-table rankings-table">
+            <thead><tr><th>Keyword</th><th>Position</th><th>Traffic</th><th>Volume</th></tr></thead>
+            <tbody>
+              {{#each organic_rankings.branded_local}}
+              <tr><td>{{keyword}}</td><td><span class="pos-chip">{{position}}</span></td><td>{{traffic}}</td><td>{{volume}}</td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </article>
+        <article class="ranking-panel">
+          <div class="ranking-title"><span class="soft-icon blue">▾</span><div><h3>Non-Branded &amp; Treatment Rankings</h3><p>Treatment-related keywords with strong first-page visibility.</p></div></div>
+          <table class="data-table rankings-table treatment-table">
+            <thead><tr><th>Keyword</th><th>Pos.</th><th>Traffic</th><th>Volume</th><th>KD</th></tr></thead>
+            <tbody>
+              {{#each organic_rankings.non_branded_treatment}}
+              <tr><td>{{keyword}}</td><td>{{position}}</td><td>{{traffic}}</td><td>{{volume}}</td><td><span class="kd">{{kd}}</span></td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </article>
+      </div>
+      <footer class="dark-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-07-keyword-ranking-opportunities" class="slide">
+      <header class="slide-header compact-header">
+        <h2>Keyword Ranking Opportunities</h2>
+        <div class="accent-line"></div>
+        <p>A snapshot of current branded, local and treatment-related keyword visibility.</p>
+      </header>
+      <div class="opportunity-tables structured-visual">
+        <article class="opportunity-panel">
+          <h3>{{keyword_opportunities.group_1.title}}</h3>
+          <table class="data-table opportunity-table">
+            <thead><tr><th>Keyword</th><th>Position</th><th>Search Volume</th><th>Keyword Difficulty</th><th>Target page</th></tr></thead>
+            <tbody>
+              {{#each keyword_opportunities.group_1.rows}}
+              <tr><td>{{keyword}}</td><td>{{position}}</td><td>{{search_volume}}</td><td>{{keyword_difficulty}}</td><td>{{target_page}}</td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </article>
+        <article class="opportunity-panel baton-panel">
+          <h3>{{keyword_opportunities.group_2.title}}</h3>
+          <table class="data-table opportunity-table">
+            <thead><tr><th>Keyword</th><th>Position</th><th>Search Volume</th><th>Keyword Difficulty</th><th>Target page</th></tr></thead>
+            <tbody>
+              {{#each keyword_opportunities.group_2.rows}}
+              <tr><td>{{keyword}}</td><td>{{position}}</td><td>{{search_volume}}</td><td>{{keyword_difficulty}}</td><td>{{target_page}}</td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </article>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-08-competitor-comparison" class="slide">
+      <header class="slide-header compact-header">
+        <h2>Competitor Comparison Analysis</h2>
+        <div class="accent-line"></div>
+        <p>Organic search benchmark across core local competitors.</p>
+      </header>
+      <div class="competitor-dashboard structured-visual">
+        <div class="stat-row">
+          <article class="panel stat-card"><span class="soft-icon teal">☷</span><strong>{{competitors.summary.domains_compared}}</strong><p>domains compared</p></article>
+          <article class="panel stat-card"><span class="soft-icon blue">▥</span><strong>{{competitors.summary.highest_traffic}}</strong><p>highest competitor traffic</p></article>
+          <article class="panel stat-card"><span class="soft-icon green">▤</span><strong>{{competitors.summary.largest_keyword_footprint}}</strong><p>largest keyword footprint</p></article>
+          <article class="panel stat-card"><span class="soft-icon purple">⬟</span><strong>{{competitors.summary.strongest_ref_domains}}</strong><p>strongest ref. domains</p></article>
+        </div>
+        <article class="panel traffic-chart-card">
+          <h3>Organic traffic by domain</h3>
+          <div class="traffic-data-chart" data-max="{{competitors.chart_max_raw}}" aria-label="Organic traffic by domain bar chart">
+            {{#each competitors.chart_rows}}
+            <div class="traffic-data-row {{row_class}}" data-value="{{traffic_raw}}">
+              <span class="traffic-domain">{{domain}}</span>
+              <div class="traffic-bar-track"><i></i><b class="traffic-value"></b></div>
+            </div>
+            {{/each}}
+            <div class="traffic-axis-labels">{{competitors.axis_labels_html}}</div>
+            <p class="traffic-axis-title">Organic Traffic</p>
+          </div>
+        </article>
+        <article class="panel footprint-card">
+          <h3>Competitor footprint details</h3>
+          <table class="data-table footprint-table">
+            <thead><tr><th>Domain</th><th>Organic Traffic</th><th>Organic Keywords</th><th>Backlinks</th><th>Ref. Domains</th><th>Paid Keywords</th><th>Paid Traffic Cost</th></tr></thead>
+            <tbody>
+              {{#each competitors.table_rows}}
+              <tr class="{{row_class}}"><td>{{domain}}</td><td>{{organic_traffic}}</td><td>{{organic_keywords}}</td><td>{{backlinks}}</td><td>{{ref_domains}}</td><td>{{paid_keywords}}</td><td>{{paid_traffic_cost}}</td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </article>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-09-paid-search-demand" class="slide paid-search-slide">
+      <header class="slide-header compact-header">
+        <h2>Paid search demand</h2>
+        <div class="accent-line"></div>
+        <p>{{paid_search.subtitle}}</p>
+      </header>
+      <div class="paid-search-dashboard structured-visual">
+        <div class="paid-left">
+          <div class="demand-summary panel">
+            <div><strong>{{paid_search.summary.keywords_reviewed}}</strong><span>keywords<br>reviewed</span></div>
+            <div><strong>{{paid_search.summary.monthly_searches}}</strong><span>monthly searches<br>in shown terms</span></div>
+            <div><strong>{{paid_search.summary.highest_bid}}</strong><span>highest top-of-page<br>bid in sample</span></div>
+          </div>
+          <article class="panel demand-chart">
+            <h3>Avg. monthly searches</h3>
+            <div class="search-data-chart" aria-label="Average monthly searches bar chart">
+              {{#each paid_search.chart_rows}}
+              <div class="search-data-row {{row_class}}" data-value="{{searches_raw}}"><span>{{keyword}}</span><div><i></i></div><b></b></div>
+              {{/each}}
+            </div>
+          </article>
+        </div>
+        <aside class="panel auction-signals">
+          <h3>AUCTION SIGNALS</h3>
+          {{#each paid_search.auction_signals}}
+          <div class="bid"><strong>{{bid_range}}</strong><span>{{label}}</span></div>
+          {{/each}}
+          <h4>{{paid_search.competition_label}}</h4>
+          <p>{{paid_search.competition_summary}}</p>
+          <div class="implication">
+            <strong>Implication</strong>
+            <p>{{paid_search.implication}}</p>
+          </div>
+        </aside>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-10-paid-media-structure" class="slide">
+      <header class="slide-header">
+        <h2>Paid media structure</h2>
+        <div class="accent-line"></div>
+        <p>{{paid_media.subtitle}}</p>
+      </header>
+      <div class="media-structure">
+        <article>
+          <span>01</span>
+          <h3>{{paid_media.campaign_1.title}}</h3>
+          <div class="column-rule"></div>
+          <p>{{paid_media.campaign_1.keywords_html}}</p>
+          <p>{{paid_media.campaign_1.description}}</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>{{paid_media.campaign_2.title_html}}</h3>
+          <div class="column-rule"></div>
+          <p>{{paid_media.campaign_2.keywords_html}}</p>
+          <p>{{paid_media.campaign_2.description}}</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>{{paid_media.campaign_3.title_html}}</h3>
+          <div class="column-rule"></div>
+          <p>{{paid_media.campaign_3.keywords_html}}</p>
+          <p>{{paid_media.campaign_3.description}}</p>
+        </article>
+      </div>
+      <div class="operating-rules">
+        <h3>Operating rules</h3>
+        <p>{{paid_media.operating_rules_html}}</p>
+      </div>
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-11-meta-ads-snapshot" class="slide">
+      <header class="slide-header">
+        <h2>Meta ads snapshot</h2>
+        <div class="accent-line"></div>
+        <p>What {{business.name}} is currently running on Meta Ads&nbsp; (<a href="{{meta_ads.library_url}}">View {{business.name}}’s Active Meta Ads</a>)</p>
+      </header>
+      <img class="meta-snapshot" src="{{assets.meta_ads_snapshot}}" alt="{{business.name}} Meta ads snapshot">
+      <footer class="slide-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-12-social-creative-samples" class="slide blank-creative">
+      <header class="slide-header large-title">
+        <h2>Social creative samples</h2>
+        <div class="accent-line"></div>
+      </header>
+      <img class="creative-background-image" src="{{assets.social_creative_background}}" alt="{{business.name}} social creative samples">
+      <footer class="creative-footer">
+        <p>Concept visuals only. Patient testimonials and before/after images require documented permission and compliance review.</p>
+        <span></span>
+      </footer>
+    </section>
+
+    <section id="slide-13-video-creative-sample" class="slide blank-creative">
+      <header class="slide-header large-title">
+        <h2>Social Media Video Creative Sample</h2>
+        <div class="accent-line"></div>
+        <p>{{social_video.subtitle}}</p>
+      </header>
+      <div class="video-creative-frame">
+        <img src="{{assets.video_creative_thumbnail}}" alt="{{business.name}} social media video creative thumbnail">
+      </div>
+      <footer class="creative-footer"><span></span></footer>
+    </section>
+
+    <section id="slide-14-launch-plan" class="slide dark-slide launch-slide">
+      <h2>90-day launch plan</h2>
+      <p class="launch-subtitle">{{launch_plan.subtitle}}</p>
+      <div class="launch-columns">
+        <article>
+          <h3>{{launch_plan.phase_1.period}}</h3>
+          <h4>{{launch_plan.phase_1.title}}</h4>
+          <div></div>
+          <p>{{launch_plan.phase_1.tasks_html}}</p>
+        </article>
+        <article>
+          <h3>{{launch_plan.phase_2.period}}</h3>
+          <h4>{{launch_plan.phase_2.title}}</h4>
+          <div></div>
+          <p>{{launch_plan.phase_2.tasks_html}}</p>
+        </article>
+        <article>
+          <h3>{{launch_plan.phase_3.period}}</h3>
+          <h4>{{launch_plan.phase_3.title}}</h4>
+          <div></div>
+          <p>{{launch_plan.phase_3.tasks_html}}</p>
+        </article>
+      </div>
+      <div class="next-step-block">
+        <h3>Next step</h3>
+        <p>{{launch_plan.next_step}}</p>
+      </div>
+      <img class="launch-logo" src="assets/wise-logo.png" alt="Wise Advertisement">
+      <footer class="dark-footer"><span></span></footer>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll(".score-gauge").forEach((gauge) => {
+      const score = Math.max(0, Math.min(Number(gauge.dataset.score) || 0, Number(gauge.dataset.max) || 100));
+      const maxScore = Number(gauge.dataset.max) || 100;
+      const progress = gauge.querySelector(".score-gauge-progress");
+      const valueLabel = gauge.querySelector(".gauge-value");
+      const maxLabel = gauge.querySelector(".gauge-label");
+      const radius = Number(progress.getAttribute("r"));
+      const circumference = 2 * Math.PI * radius;
+      const ratio = score / maxScore;
+      progress.style.strokeDasharray = `${ratio * circumference} ${circumference}`;
+      valueLabel.textContent = Math.round(score);
+      maxLabel.textContent = `OUT OF ${Math.round(maxScore)}`;
+      gauge.setAttribute("aria-label", `Performance score ${Math.round(score)} out of ${Math.round(maxScore)}`);
+    });
+    document.querySelectorAll(".traffic-data-chart").forEach((chart) => {
+      const maxValue = Number(chart.dataset.max) || 1;
+      chart.querySelectorAll(".traffic-data-row").forEach((row) => {
+        const value = Number(row.dataset.value) || 0;
+        const percent = Math.max(0, Math.min(100, (value / maxValue) * 100));
+        const formatted = value >= 1000 ? `${Number((value / 1000).toFixed(1))}K` : `${value}`;
+        row.style.setProperty("--bar-width", `${percent}%`);
+        row.querySelector(".traffic-value").textContent = formatted;
+      });
+    });
+    document.querySelectorAll(".search-data-chart").forEach((chart) => {
+      const rows = Array.from(chart.querySelectorAll(".search-data-row"));
+      const maxValue = Math.max(...rows.map((row) => Number(row.dataset.value) || 0), 1);
+      rows.forEach((row) => {
+        const value = Number(row.dataset.value) || 0;
+        const percent = Math.max(0, Math.min(100, (value / maxValue) * 100));
+        row.style.setProperty("--bar-width", `${percent}%`);
+        row.querySelector("b").textContent = value.toLocaleString("en-US");
+      });
+    });
+  </script>
+</body>
+</html>
